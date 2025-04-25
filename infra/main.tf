@@ -17,6 +17,7 @@ resource "azurerm_resource_group" "example" {
   location = "westus2"
 }
 
+
 resource "azurerm_mssql_server" "example" {
   name                         = "serverproyectoin"
   location                     = azurerm_resource_group.example.location

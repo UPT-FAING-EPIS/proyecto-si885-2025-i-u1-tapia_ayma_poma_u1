@@ -1,0 +1,55 @@
+name: Deploy infraestructura e insertar datos
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Clonar el repositorio
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    # 2. Configurar Terraform
+    - name: Set up Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: "1.4.6"
+
+    # 3. Exportar credenciales de Azure para Terraform
+    - name: Set Azure credentials
+      run: |
+        echo "ARM_CLIENT_ID=${{ secrets.AZURE_CLIENT_ID }}" >> $GITHUB_ENV
+        echo "ARM_CLIENT_SECRET=${{ secrets.AZURE_CLIENT_SECRET }}" >> $GITHUB_ENV
+        echo "ARM_TENANT_ID=${{ secrets.AZURE_TENANT_ID }}" >> $GITHUB_ENV
+        echo "ARM_SUBSCRIPTION_ID=${{ secrets.AZURE_SUBSCRIPTION_ID }}" >> $GITHUB_ENV
+
+    # 4. Inicializar y aplicar Terraform
+    - name: Terraform Init
+      working-directory: ./infra
+      run: terraform init
+
+    - name: Terraform Apply
+      working-directory: ./infra
+      run: terraform apply -auto-approve
+
+    # 5. Login en Azure CLI
+    - name: Azure Login
+      run: az login --service-principal -u ${{ secrets.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }} --tenant ${{ secrets.AZURE_TENANT_ID }}
+
+    # 6. Instalar sqlcmd
+    - name: Install sqlcmd tools
+      run: |
+        curl https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc
+        sudo curl https://packages.microsoft.com/config/ubuntu/22.04/prod.list | sudo tee /etc/apt/sources.list.d/microsoft-prod.list
+        sudo apt-get update
+        sudo ACCEPT_EULA=Y apt-get install -y mssql-tools unixodbc-dev
+
+    # 7. Ejecutar script de INSERTS
+    - name: Run INSERTS script
+      run: |
+        /opt/mssql-tools/bin/sqlcmd -S tcp:${{ secrets.SQL_SERVER_NAME }}.database.windows.net -d ${{ secrets.DATABASE_NAME }} -U ${{ secrets.SQL_ADMIN }} -P "${{ secrets.SQL_PASSWORD }}" -i ./scripts/inserts.sql

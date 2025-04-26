@@ -32,12 +32,14 @@ Análisis de las herramientas y tecnologías utilizadas en las tesis de grado de
 
 Informe de Factibilidad
 
-Versión _{1.0}_
+Versión *{1.0}*
 
-| CONTROL DE VERSIONES |     |     |     |     |     |
-| --- |     |     |     |     |     | --- | --- | --- | --- | --- |
+| CONTROL DE VERSIONES |  |  |  |  |  |
+| :-: | :- | :- | :- | :- | :- |
 | Versión | Hecha por | Revisada por | Aprobada por | Fecha | Motivo |
-| 1.0 | MPV | ELV | ARV | 10/10/2025 | Versión Original |
+| 1\.0 | MPV | ELV | ARV | 10/10/2025 | Versión Original |
+
+</center>
 
 **ÍNDICE GENERAL**
 

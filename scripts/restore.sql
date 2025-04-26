@@ -8,14 +8,14 @@ GO
 SET ANSI_NULLS ON;
 GO
 
--- Creando base de datos bdlab03
-IF NOT EXISTS (SELECT name FROM master.dbo.sysdatabases WHERE name = 'bdlab03')
+-- Creando base de datos analisistesis
+IF NOT EXISTS (SELECT name FROM master.dbo.sysdatabases WHERE name = 'analisistesis')
 BEGIN
-    CREATE DATABASE [bdlab03] COLLATE SQL_Latin1_General_CP1_CI_AS;
+    CREATE DATABASE [analisistesis] COLLATE SQL_Latin1_General_CP1_CI_AS;
 END
 GO
 
-USE [bdlab03];
+USE [analisistesis];
 GO
 
 -- Creando tabla archivo_csv
@@ -49,7 +49,7 @@ GO
 MERGE INTO [dbo].[categoria_tecnologia] AS target
 USING (VALUES
     (1, 'Lenguajes de programacion'),
-    (2, 'Frameworks y Librerías'),
+    (2, 'Frameworks y Librerï¿½as'),
     (3, 'Bases de Datos'),
     (4, 'Plataformas de Nube e Infraestructura'),
     (5, 'Inteligencia Artificial'),
@@ -158,15 +158,15 @@ GO
 MERGE INTO [dbo].[universidad] AS target
 USING (VALUES
     (1, 'Universidad Privada de Tacna', 'TACNA', 'PRIVADA'),
-    (2, 'Universidad Nacional de San Agustín de Arequipa', 'Arequipa', 'PRIVADA'),
-    (3, 'Universidad César Vallejo', 'Lima', 'PUBLICA'),
+    (2, 'Universidad Nacional de San Agustï¿½n de Arequipa', 'Arequipa', 'PRIVADA'),
+    (3, 'Universidad Cï¿½sar Vallejo', 'Lima', 'PUBLICA'),
     (4, 'Universidad Nacional de Trujillo', 'Trujillo', 'PUBLICA'),
     (5, 'Universidad Privada del Norte', 'Lima', 'PRIVADA'),
     (6, 'Universidad de Ciencias y Empresariales', 'Cuzco', 'PRIVADA'),
     (7, 'Universidad Nacional Mayor de San Marcos', 'Lima', 'PUBLICA'),
-    (8, 'Pontificia Universidad Católica del Perú', 'Lima', 'PRIVADA'),
+    (8, 'Pontificia Universidad Catï¿½lica del Perï¿½', 'Lima', 'PRIVADA'),
     (9, 'Universidad Privada del Norte', 'Piura', 'PRIVADA'),
-    (10, 'Universidad de San Martín de Porres', 'Lima', 'PRIVADA')
+    (10, 'Universidad de San Martï¿½n de Porres', 'Lima', 'PRIVADA')
 ) AS source ([id_universidad], [nombre], [ubicacion], [tipo])
 ON target.[id_universidad] = source.[id_universidad]
 WHEN NOT MATCHED THEN
@@ -181,7 +181,7 @@ IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[te
 BEGIN
     CREATE TABLE [dbo].[tesis] (
         [id_tesis] INT IDENTITY(1,1) NOT NULL,
-        [año_publicacion] INT NULL,
+        [aï¿½o_publicacion] INT NULL,
         [categoria] NVARCHAR(MAX) NULL,
         [id_universidad] INT NULL,
         PRIMARY KEY ([id_tesis]),
@@ -197,19 +197,19 @@ GO
 MERGE INTO [dbo].[tesis] AS target
 USING (VALUES
     (1, 2024, 'Desarrollo de Software', 1),
-    (2, 2023, 'Sistemas de Información', 2),
+    (2, 2023, 'Sistemas de Informaciï¿½n', 2),
     (3, 2024, 'Inteligencia Artificial', 3),
-    (4, 2023, 'Análisis de Datos', 4),
+    (4, 2023, 'Anï¿½lisis de Datos', 4),
     (5, 2024, 'Desarrollo de Aplicaciones Web', 5),
-    (6, 2023, 'Aplicaciones Móviles', 6),
-    (7, 2024, 'Seguridad Informática', 7),
+    (6, 2023, 'Aplicaciones Mï¿½viles', 6),
+    (7, 2024, 'Seguridad Informï¿½tica', 7),
     (8, 2023, 'Internet de las Cosas (IoT)', 8),
     (9, 2024, 'Big Data y Cloud Computing', 5),
     (10, 2023, 'Desarrollo de Videojuegos', 10)
-) AS source ([id_tesis], [año_publicacion], [categoria], [id_universidad])
+) AS source ([id_tesis], [aï¿½o_publicacion], [categoria], [id_universidad])
 ON target.[id_tesis] = source.[id_tesis]
 WHEN NOT MATCHED THEN
-    INSERT ([id_tesis], [año_publicacion], [categoria], [id_universidad]) VALUES (source.[id_tesis], source.[año_publicacion], source.[categoria], source.[id_universidad]);
+    INSERT ([id_tesis], [aï¿½o_publicacion], [categoria], [id_universidad]) VALUES (source.[id_tesis], source.[aï¿½o_publicacion], source.[categoria], source.[id_universidad]);
 GO
 
 SET IDENTITY_INSERT [dbo].[tesis] OFF;

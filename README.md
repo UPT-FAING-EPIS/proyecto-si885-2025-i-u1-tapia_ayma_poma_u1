@@ -72,19 +72,10 @@ El objetivo es identificar patrones, proponer recomendaciones y trazar la evoluc
 
 ## 🛠️ Tecnologías Utilizadas
 
-- Python 🐍
-- SQL Database 🗄️
-- Tableau / Power BI 📊
-- Pandas / NumPy 🧮
-- Jupyter Notebook 📓
+- SQL Server 🗄️
+- Power BI 📊
 
 ---
 
-## 📝 Licencia
-
-Este proyecto está bajo la licencia MIT.  
-Consulta el archivo [LICENSE](LICENSE) para más detalles.
-
----
 
 > **Tacna - Perú, 2025** 🌎

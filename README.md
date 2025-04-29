@@ -14,19 +14,6 @@ El objetivo es identificar patrones, proponer recomendaciones y trazar la evoluc
 
 ---
 
-## 📑 Índice
-
-- [Resumen del Proyecto](#resumen-del-proyecto)
-- [Objetivos](#objetivos)
-- [Metodología](#metodología)
-- [Resultados Esperados](#resultados-esperados)
-- [Integrantes](#integrantes)
-- [Control de Versiones](#control-de-versiones)
-- [Tecnologías Utilizadas](#tecnologías-utilizadas)
-- [Licencia](#licencia)
-
----
-
 ## 🎯 Objetivos
 
 - Analizar las principales herramientas tecnológicas en tesis de Ingeniería de Sistemas.

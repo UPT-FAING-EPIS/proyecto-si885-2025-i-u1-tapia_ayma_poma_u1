@@ -29,5 +29,6 @@ Sin embargo, no existe un análisis sistemático que permita identificar las her
   - Bases de datos  
   - Frameworks  
   - Otras tecnologías relevantes  
-- **Examinar** la evolución del uso de tecnologías a lo largo del tiempo.  
+- **Examinar** la evolución del uso de tecnologías a lo largo del tiempo.
+- **Comparar** el uso de tecnologías en las tesis de universidades públicas y privadas del Perú para identificar diferencias y posibles brechas en la adopción tecnológica.
 - **Presentar** los resultados mediante análisis visuales e interactivos para apoyar la toma de decisiones académicas fundamentadas.
